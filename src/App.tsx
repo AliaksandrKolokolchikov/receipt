@@ -1,8 +1,11 @@
+import { Route, Routes } from 'react-router-dom';
+import { ROUTES } from './constans';
+import { MainPage } from './pages';
+
 export const App = () => {
   return (
-    <>
-      <div className="text-red-400 pl-3">Hello</div>
-      <p>sddsdsds</p>
-    </>
+    <Routes>
+      <Route path={ROUTES.MAIN_NESTED} element={<MainPage />} />
+    </Routes>
   );
 };
