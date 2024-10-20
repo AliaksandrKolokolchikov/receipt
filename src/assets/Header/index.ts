@@ -6,4 +6,5 @@ export enum HEADER {
   INSTA = 'src/assets/Header/insta.svg',
   TIKTOC = 'src/assets/Header/tiktok.svg',
   YT = 'src/assets/Header/youtube.svg',
+  QR = 'src/assets/Header/qr.svg',
 }
