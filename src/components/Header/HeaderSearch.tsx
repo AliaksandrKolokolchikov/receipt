@@ -15,8 +15,8 @@ export const HeaderSearch = () => {
   };
 
   return (
-    <div className="">
-      <div className="relative flex items-center border border-gray-700 rounded-full w-full max-w-lg h-12 bg-[#171717]">
+    <div className="w-full">
+      <div className="relative flex items-center border border-gray-700 rounded-full w-full max-w-[400px] h-10 bg-[#171717]">
         <img className="ml-3 opacity-50 w-5 h-5" src={HEADER.LOUP} alt="Loup" />
         <div className="flex-grow ml-2">
           <input
@@ -26,7 +26,7 @@ export const HeaderSearch = () => {
             placeholder="What's cooking?"
             autoComplete="off"
             value={search}
-            onChange={(e) => setSearch(e.target.value)} // Обновляем поисковый запрос
+            onChange={(e) => setSearch(e.target.value)}
           />
         </div>
         <button

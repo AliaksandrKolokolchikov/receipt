@@ -15,14 +15,14 @@ export const HeaderScan = () => {
   };
 
   return (
-    <div className="relative">
-      <div className="flex items-center">
+    <>
+      <div className="self-start min-w-40">
         <button
           onClick={handleButtonClick}
           className="flex items-center justify-center gap-2 px-4 py-2 bg-white rounded-full shadow-md"
         >
-          <img src={HEADER.QR} alt="QR Icon" width={20} height={20} />
-          <span>Get the app</span>
+          <img src={HEADER.QR} alt="QR Icon" width={16} height={16} />
+          <span className="text-sm">Get the app</span>
         </button>
 
         {showPopup && (
@@ -40,6 +40,6 @@ export const HeaderScan = () => {
           </div>
         )}
       </div>
-    </div>
+    </>
   );
 };

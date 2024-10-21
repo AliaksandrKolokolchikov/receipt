@@ -13,7 +13,7 @@ export const ItemSearchRecipes = ({ recipe }: ItemSearchRecipesProps) => {
   }
 
   return (
-    <div className="flex flex-wrap gap-10 px-5 pt-10 font-[Inter]">
+    <div className="gap-10 px-5 pt-10 font-[Inter]">
       <ul>
         <li>
           <img
