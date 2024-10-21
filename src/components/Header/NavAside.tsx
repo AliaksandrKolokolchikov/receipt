@@ -14,7 +14,7 @@ export const NavAside = ({ activePage, setActivePage }: Props) => {
   const location = useLocation();
 
   const menuItems = [
-    { name: 'Home', icon: HEADER.HOME, key: 'home', route: ROUTES.MAIN_NESTED },
+    { name: 'Home', icon: HEADER.HOME, key: 'home', route: ROUTES.MAIN },
     { name: 'Search', icon: HEADER.LOUP, key: 'search', route: ROUTES.SEARCH },
     { name: 'Sale', icon: HEADER.SALE, key: 'sale', route: ROUTES.SALE },
   ];
@@ -23,23 +23,27 @@ export const NavAside = ({ activePage, setActivePage }: Props) => {
     const activeItem = menuItems.find(
       (item) => item.route === location.pathname,
     );
-    setActivePage(activeItem ? activeItem.key : 'home');
-  }, [location.pathname, setActivePage, menuItems]);
+    if (activeItem && activeItem.key !== activePage) {
+      setActivePage(activeItem.key);
+    }
+  }, [location.pathname, activePage, setActivePage]);
 
   const handleMenuClick = (route: string, key: string) => {
-    setActivePage(key);
-    navigate(route);
+    if (key !== activePage) {
+      setActivePage(key);
+      navigate(route);
+    }
   };
 
   return (
-    <div className="w-[105px] h-[984px] bg-[#000000] font-Inter border-r border-[#171717]">
+    <div className="w-[105px] min-h-[984px] bg-[#000000] font-Inter border-r border-[#171717]">
       <div className="w-full h-full">
         <div className="py-10 pl-5">
           <img
             className="cursor-pointer"
             src={HEADER.LOGO}
             alt="Logo"
-            onClick={() => handleMenuClick(ROUTES.MAIN_NESTED, 'home')}
+            onClick={() => handleMenuClick(ROUTES.MAIN, 'home')}
           />
         </div>
         <div className="flex flex-col items-center justify-center gap-8">
@@ -49,7 +53,7 @@ export const NavAside = ({ activePage, setActivePage }: Props) => {
               src={item.icon}
               alt={item.name}
               className={`cursor-pointer ${
-                activePage === item.key ? 'border-b-4 border-white' : ''
+                activePage === item.key ? 'opacity-100' : 'opacity-30'
               }`}
               onClick={() => handleMenuClick(item.route, item.key)}
             />

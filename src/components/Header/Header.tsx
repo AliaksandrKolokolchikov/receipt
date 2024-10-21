@@ -3,7 +3,7 @@ import { HeaderScan } from './HeaderScan.tsx';
 
 export const Header = () => {
   return (
-    <div className="w-full flex justify-between items-center ">
+    <div className="flex justify-between">
       <HeaderSearch />
       <HeaderScan />
     </div>
