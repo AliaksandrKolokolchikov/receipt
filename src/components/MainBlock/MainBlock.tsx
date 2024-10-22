@@ -2,16 +2,12 @@ import { useLocation } from 'react-router-dom';
 
 import { ROUTES } from '../../constans';
 import { MainPage, SearchRecipe } from '../../pages';
-import { RECIPE } from '../../types';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store';
 
-type Props = {
-  recipe: RecipeHit;
-};
-interface RecipeHit {
-  recipe: RECIPE;
-}
+export const MainBlock = () => {
+  const recipes = useSelector((state: RootState) => state.recipeData.recipes);
 
-export const MainBlock = ({ recipe }: Props) => {
   const location = useLocation();
 
   const renderContent = () => {
@@ -19,7 +15,7 @@ export const MainBlock = ({ recipe }: Props) => {
       case ROUTES.MAIN:
         return <div className="text-white">sdsd</div>;
       case ROUTES.SEARCH:
-        return <SearchRecipe recipe={recipe} />;
+        return <SearchRecipe recipes={recipes} />;
       case ROUTES.SALE:
         return <div className="text-white">Sale Page Content</div>;
       default:

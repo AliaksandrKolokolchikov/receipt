@@ -1,19 +1,22 @@
 import { HEADER } from '../../assets';
 import { useState } from 'react';
-import { ItemSearchRecipes } from '../SearchRecipes';
-import { useFetchRecipe } from '../../hooks';
+import { ShowResultsSearch } from '../SearchRecipes';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '../../store';
+import { fetchRecipes } from '../../store/search/searchSlicer.ts';
 
 export const HeaderSearch = () => {
   const [search, setSearch] = useState('');
-  const { recipes, loading, error } = useFetchRecipe(search);
   const [showResults, setShowResults] = useState(false);
+
+  const dispatch = useDispatch<AppDispatch>();
 
   const handleShowResults = () => {
     if (search.trim() !== '') {
+      dispatch(fetchRecipes(search)); // Вызываем action для загрузки рецептов
       setShowResults(true);
     }
   };
-
   return (
     <div className="w-full">
       <div className="relative flex items-center border border-gray-700 rounded-full w-full max-w-[400px] h-10 bg-[#171717]">
@@ -37,25 +40,7 @@ export const HeaderSearch = () => {
         </button>
       </div>
 
-      {showResults && (
-        <div className="mt-8">
-          {loading && <p className="text-center text-gray-400">Loading...</p>}
-
-          {error && <p className="text-center text-red-500">{error}</p>}
-
-          {!loading && recipes.length > 0 && (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              {recipes.map((item) => (
-                <ItemSearchRecipes key={item.recipe.uri} recipe={item} />
-              ))}
-            </div>
-          )}
-
-          {!loading && recipes.length === 0 && (
-            <p className="text-center text-gray-400">No results found</p>
-          )}
-        </div>
-      )}
+      {showResults && <ShowResultsSearch />}
     </div>
   );
 };

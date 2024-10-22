@@ -5,3 +5,10 @@ export type RECIPE = {
   totalWeight: number;
   id: number;
 };
+
+export type RECIPE_DATA = {
+  recipes: RecipeHit[];
+};
+export type RecipeHit = {
+  recipe: RECIPE;
+};

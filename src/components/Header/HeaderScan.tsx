@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { QRCodeSVG } from 'qrcode.react';
 
 import { HEADER } from '../../assets';
+import { HeaderPopUpScan } from './HeaderPopUpScan.tsx';
 
 export const HeaderScan = () => {
   const [showPopup, setShowPopup] = useState(false);
@@ -25,20 +25,7 @@ export const HeaderScan = () => {
           <span className="text-sm">Get the app</span>
         </button>
 
-        {showPopup && (
-          <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-            <div className="bg-white p-6 rounded-lg shadow-lg relative">
-              <button
-                className="absolute top-2 right-2 text-gray-600 hover:text-gray-800"
-                onClick={handleClosePopup}
-              >
-                ✕
-              </button>
-
-              <QRCodeSVG value="https://www.apple.com/app-store/" size={150} />
-            </div>
-          </div>
-        )}
+        {showPopup && <HeaderPopUpScan onClick={handleClosePopup} />}
       </div>
     </>
   );

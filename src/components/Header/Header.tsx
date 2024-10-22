@@ -3,7 +3,7 @@ import { HeaderScan } from './HeaderScan.tsx';
 
 export const Header = () => {
   return (
-    <div className="flex container  ">
+    <div className="flex">
       <HeaderSearch />
       <HeaderScan />
     </div>

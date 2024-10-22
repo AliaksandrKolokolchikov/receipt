@@ -1,13 +1,10 @@
-import { RECIPE } from '../../types';
+import { RecipeHit } from '../../types';
 
-interface ItemSearchRecipesProps {
+interface RecipeHitProps {
   recipe: RecipeHit;
 }
-interface RecipeHit {
-  recipe: RECIPE;
-}
 
-export const ItemSearchRecipes = ({ recipe }: ItemSearchRecipesProps) => {
+export const ItemSearchRecipes = ({ recipe }: RecipeHitProps) => {
   if (!recipe || !recipe.recipe) {
     return <p>No recipe data available.</p>;
   }
@@ -15,14 +12,14 @@ export const ItemSearchRecipes = ({ recipe }: ItemSearchRecipesProps) => {
   return (
     <div className="gap-10 px-5 pt-10 font-[Inter]">
       <ul>
-        <li>
+        <li key={recipe.recipe.id}>
           <img
             width={250}
             src={recipe.recipe.image}
             alt={recipe.recipe.label}
           />
           <div>
-            <p className="text-white max-w-[250px] text-center">
+            <p className="text-white max-w-[250px] flex justify-center">
               {recipe.recipe.label}
             </p>
             <p className="text-white flex justify-center gap-1 items-center">

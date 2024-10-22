@@ -1,17 +1,19 @@
 import { Header, ItemSearchRecipes } from '../components';
-import { RECIPE } from '../types';
+import { RecipeHit } from '../types';
 
-type Props = {
-  recipe: RecipeHit;
+type SearchRecipeProps = {
+  recipes: RecipeHit[]; // Ожидаем массив рецептов
 };
-interface RecipeHit {
-  recipe: RECIPE;
-}
-export const SearchRecipe = ({ recipe }: Props) => {
+
+export const SearchRecipe = ({ recipes }: SearchRecipeProps) => {
   return (
     <>
       <Header />
-      <ItemSearchRecipes recipe={recipe} />
+      {recipes.length > 0 ? (
+        <ItemSearchRecipes recipe={recipes[10]} />
+      ) : (
+        <p>No recipes available</p>
+      )}
     </>
   );
 };
