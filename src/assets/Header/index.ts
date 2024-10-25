@@ -1,10 +1,9 @@
-export enum HEADER {
-  LOGO = 'src/assets/Header/Logo.svg',
-  HOME = 'src/assets/Header/home.svg',
-  LOUP = 'src/assets/Header/loup.svg',
-  SALE = 'src/assets/Header/sale.svg',
-  INSTA = 'src/assets/Header/insta.svg',
-  TIKTOC = 'src/assets/Header/tiktok.svg',
-  YT = 'src/assets/Header/youtube.svg',
-  QR = 'src/assets/Header/qr.svg',
-}
+export const HEADER = {
+  LOGO: new URL('./Logo.svg', import.meta.url).href,
+  HOME: new URL('./home.svg', import.meta.url).href,
+  LOUP: new URL('./loup.svg', import.meta.url).href,
+  SALE: new URL('./sale.svg', import.meta.url).href,
+  INSTA: new URL('./insta.svg', import.meta.url).href,
+  TIKTOC: new URL('./tiktok.svg', import.meta.url).href,
+  YT: new URL('./youtube.svg', import.meta.url).href,
+};

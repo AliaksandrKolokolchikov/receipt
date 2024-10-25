@@ -3,4 +3,5 @@ export enum ROUTES {
   MAIN_NESTED = '/*',
   SEARCH = '/search',
   SALE = '/sale',
+  INFO = '/recipe_details',
 }
