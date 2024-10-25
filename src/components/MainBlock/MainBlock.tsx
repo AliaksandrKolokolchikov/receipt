@@ -2,12 +2,8 @@ import { useLocation } from 'react-router-dom';
 
 import { ROUTES } from '../../constans';
 import { MainPage, SearchRecipe } from '../../pages';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../store';
 
 export const MainBlock = () => {
-  const recipes = useSelector((state: RootState) => state.recipeData.recipes);
-
   const location = useLocation();
 
   const renderContent = () => {
@@ -15,7 +11,7 @@ export const MainBlock = () => {
       case ROUTES.MAIN:
         return <div className="text-white">sdsd</div>;
       case ROUTES.SEARCH:
-        return <SearchRecipe recipes={recipes} />;
+        return <SearchRecipe />;
       case ROUTES.SALE:
         return <div className="text-white">Sale Page Content</div>;
       default:

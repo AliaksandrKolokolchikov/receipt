@@ -16,7 +16,7 @@ export const HeaderScan = () => {
 
   return (
     <>
-      <div className="self-start min-w-40">
+      <div className="self-start ">
         <button
           onClick={handleButtonClick}
           className="flex items-center justify-center gap-2 px-4 py-2 bg-white rounded-full shadow-md"

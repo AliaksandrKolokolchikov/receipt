@@ -1,31 +1,37 @@
-import { RecipeHit } from '../../types';
+import { useNavigate } from 'react-router-dom';
 
-interface RecipeHitProps {
-  recipe: RecipeHit;
-}
+import { ROUTES } from '../../constans';
+import { RECIPE } from '../../types';
 
-export const ItemSearchRecipes = ({ recipe }: RecipeHitProps) => {
-  if (!recipe || !recipe.recipe) {
-    return <p>No recipe data available.</p>;
-  }
+type Props = {
+  recipe: RECIPE;
+};
+
+export const ItemSearchRecipes = ({ recipe }: Props) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`${ROUTES.SEARCH}/${recipe.id}`);
+  };
 
   return (
-    <div className="gap-10 px-5 pt-10 font-[Inter]">
+    <div
+      onClick={handleClick}
+      className="px-5 pt-10 font-[Inter] cursor-pointer"
+    >
       <ul>
-        <li key={recipe.recipe.id}>
-          <img
-            width={250}
-            src={recipe.recipe.image}
-            alt={recipe.recipe.label}
-          />
-          <div>
-            <p className="text-white max-w-[250px] flex justify-center">
-              {recipe.recipe.label}
-            </p>
-            <p className="text-white flex justify-center gap-1 items-center">
-              {Math.trunc(recipe.recipe.totalWeight)}
-              <span>g</span>
-            </p>
+        <li key={recipe.id} className="relative">
+          <div className="relative">
+            <img
+              className="rounded-2xl w-[350px] h-[350px]"
+              src={recipe.thumbnail_url}
+              alt={recipe.name}
+            />
+            <div className="absolute inset-0 flex flex-col justify-end">
+              <p className="text-white text-lg font-bold bg-black bg-opacity-50 px-2 py-1 rounded">
+                {recipe.name}
+              </p>
+            </div>
           </div>
         </li>
       </ul>
