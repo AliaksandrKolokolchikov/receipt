@@ -58,7 +58,7 @@ export const fetchRecipes = createAsyncThunk(
 // Функция для получения деталей рецепта по ID
 export const fetchRecipeDetails = createAsyncThunk(
   'recipes/fetchRecipeDetails',
-  async (recipeId: number, { rejectWithValue }) => {
+  async (recipeId: string | undefined, { rejectWithValue }) => {
     try {
       const response = await axios.get(
         `https://tasty.p.rapidapi.com/recipes/get-more-info`,
