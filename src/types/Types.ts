@@ -3,21 +3,24 @@ export type instructions = {
   position: number;
 };
 
+export type nutrition = {
+  calories: number;
+  carbohydrates: number;
+  fat: number;
+  fiber: number;
+  protein: number;
+  sugar: number;
+};
+
 export type RECIPE = {
   id: number | string;
   name: string;
   thumbnail_url: string;
   cook_time_minutes: number;
   instructions: instructions[];
+  nutrition: nutrition;
   description: string;
   original_video_url: string;
-};
-
-export type RECIPE_DATA = {
-  recipes?: RECIPE[];
-};
-export type RecipeHit = {
-  recipes: RECIPE;
 };
 
 export enum BUTTON_INFO {

@@ -32,7 +32,7 @@ export const fetchRecipes = createAsyncThunk(
           },
           headers: {
             'x-rapidapi-key':
-              'f6feab3252msh1b4dd811d3476d9p1283dfjsnbd963aa886de', // Вставьте сюда ваш ключ
+              'ea402bcfadmshf16033b3f88b973p1fd447jsne16e02e40932', // Вставьте сюда ваш ключ
             'x-rapidapi-host': 'tasty.p.rapidapi.com',
           },
         },

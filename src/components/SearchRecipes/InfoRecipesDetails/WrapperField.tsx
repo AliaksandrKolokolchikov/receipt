@@ -8,7 +8,7 @@ export const WrapperField = ({ onClick, selectedType, label }: Props) => {
     <>
       <div
         onClick={onClick}
-        className={`${selectedType ? 'text-white' : 'text-gray-600'}`}
+        className={`cursor-pointer ${selectedType ? 'text-white border-b' : 'text-gray-600'}`}
       >
         <p>{label}</p>
       </div>

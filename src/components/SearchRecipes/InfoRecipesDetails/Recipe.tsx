@@ -18,7 +18,6 @@ export const Recipe = () => {
   return (
     <>
       <div className="flex flex-col">
-        <h1 className="text-white text-[24px]">Recipe</h1>
         <div className="text-white ">
           {recipe.instructions.map((item) => (
             <div
