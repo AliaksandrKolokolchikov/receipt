@@ -18,16 +18,60 @@ export const Nutrition = () => {
   return (
     <>
       <div>
-        <p className="font-semibold pt-5 text-red-400">
+        <p className="font-semibold pt-5 text-yellow-400">
           Nutrient content per 100 grams:
         </p>
         <div className="text-white flex flex-col gap-2 pt-5">
-          <p>Calories:{recipe.nutrition.calories}</p>
-          <p>Carbohydrates:{recipe.nutrition.carbohydrates}</p>
-          <p>Fat:{recipe.nutrition.fat}</p>
-          <p>Fiber:{recipe.nutrition.fiber}</p>
-          <p>Protein:{recipe.nutrition.protein}</p>
-          <p>Sugar:{recipe.nutrition.sugar}</p>
+          <ul>
+            <li>
+              <p>
+                Calories:
+                <span className="text-gray-500 ml-2">
+                  {recipe.nutrition.calories}
+                </span>
+              </p>
+            </li>
+            <li>
+              <p>
+                Carbohydrates:
+                <span className="text-gray-500 ml-2 ">
+                  {recipe.nutrition.carbohydrates}
+                </span>
+              </p>
+            </li>
+            <li>
+              <p>
+                Fat:
+                <span className="text-gray-500 ml-2">
+                  {recipe.nutrition.fat}
+                </span>
+              </p>
+            </li>
+            <li>
+              <p>
+                Fiber:
+                <span className="text-gray-500 ml-2">
+                  {recipe.nutrition.fiber}
+                </span>
+              </p>
+            </li>
+            <li>
+              <p>
+                Protein:
+                <span className="text-gray-500 ml-2">
+                  {recipe.nutrition.protein}
+                </span>
+              </p>
+            </li>
+            <li>
+              <p>
+                Sugar:
+                <span className="text-gray-500 ml-2">
+                  {recipe.nutrition.sugar}
+                </span>
+              </p>
+            </li>
+          </ul>
         </div>
       </div>
     </>

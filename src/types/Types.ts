@@ -21,6 +21,10 @@ export type RECIPE = {
   nutrition: nutrition;
   description: string;
   original_video_url: string;
+  user_ratings: {
+    count_negative: number;
+    count_positive: number;
+  };
 };
 
 export enum BUTTON_INFO {
