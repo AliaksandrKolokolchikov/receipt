@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 import { RECIPE } from '../../types';
+import { RootState } from '../store.ts';
 
 type SearchState = {
   recipes: RECIPE[];
@@ -17,7 +18,6 @@ const initialState: SearchState = {
   recipeDetails: null,
 };
 
-// Функция для получения списка рецептов с использованием RapidAPI
 export const fetchRecipes = createAsyncThunk(
   'recipes/fetchRecipes',
   async (searchQuery: string, { rejectWithValue }) => {
@@ -28,11 +28,11 @@ export const fetchRecipes = createAsyncThunk(
           params: {
             from: '0',
             size: '20',
-            tags: searchQuery, // используем переданный параметр для тегов
+            tags: searchQuery,
           },
           headers: {
             'x-rapidapi-key':
-              'f6feab3252msh1b4dd811d3476d9p1283dfjsnbd963aa886de', // Вставьте сюда ваш ключ
+              'ea402bcfadmshf16033b3f88b973p1fd447jsne16e02e40932',
             'x-rapidapi-host': 'tasty.p.rapidapi.com',
           },
         },
@@ -40,12 +40,10 @@ export const fetchRecipes = createAsyncThunk(
 
       console.log(response.data.results);
 
-      // Возвращаем результаты, если они есть
       return response.data.results || [];
     } catch (error) {
-      console.error(error); // Выводим ошибку в консоль для отладки
+      console.error(error);
       if (axios.isAxiosError(error) && error.response) {
-        // Обрабатываем ошибки, если ответ сервера есть
         return rejectWithValue(
           error.response.data.message || 'Error fetching recipes',
         );
@@ -55,10 +53,20 @@ export const fetchRecipes = createAsyncThunk(
   },
 );
 
-// Функция для получения деталей рецепта по ID
 export const fetchRecipeDetails = createAsyncThunk(
   'recipes/fetchRecipeDetails',
-  async (recipeId: number, { rejectWithValue }) => {
+  async (recipeId: string | undefined, { getState, rejectWithValue }) => {
+    const state = getState() as RootState;
+
+    const existingRecipe =
+      state.recipeData.recipes.find(
+        (recipe) => recipe.id === Number(recipeId),
+      ) || state.recipeData.recipeDetails;
+
+    if (existingRecipe && existingRecipe.id === Number(recipeId)) {
+      return existingRecipe;
+    }
+
     try {
       const response = await axios.get(
         `https://tasty.p.rapidapi.com/recipes/get-more-info`,
@@ -66,15 +74,12 @@ export const fetchRecipeDetails = createAsyncThunk(
           params: { id: recipeId },
           headers: {
             'x-rapidapi-key':
-              'f6feab3252msh1b4dd811d3476d9p1283dfjsnbd963aa886de', // Вставьте сюда ваш ключ
+              'ea402bcfadmshf16033b3f88b973p1fd447jsne16e02e40932',
             'x-rapidapi-host': 'tasty.p.rapidapi.com',
           },
         },
       );
-
-      console.log(response.data);
-
-      return response.data; // Возвращаем данные рецепта
+      return response.data;
     } catch (error) {
       return rejectWithValue('Error fetching recipe details');
     }
@@ -89,7 +94,7 @@ export const recipesSlice = createSlice({
     builder
       .addCase(fetchRecipes.pending, (state) => {
         state.loading = true;
-        state.error = null;
+        state.error = null; // Reset error on new request
       })
       .addCase(fetchRecipes.rejected, (state, action) => {
         state.loading = false;
@@ -101,7 +106,7 @@ export const recipesSlice = createSlice({
       })
       .addCase(fetchRecipeDetails.pending, (state) => {
         state.loading = true;
-        state.error = null;
+        state.error = null; // Reset error when starting a new fetch
       })
       .addCase(fetchRecipeDetails.rejected, (state, action) => {
         state.loading = false;

@@ -1,19 +1,33 @@
 export type instructions = {
-  display_text: string; // Название ингредиента
-  position: number; // Количество
+  display_text: string;
+  position: number;
+};
+
+export type nutrition = {
+  calories: number;
+  carbohydrates: number;
+  fat: number;
+  fiber: number;
+  protein: number;
+  sugar: number;
 };
 
 export type RECIPE = {
-  id: number | string; // Идентификатор рецепта
-  name: string; // Название блюда
+  id: number | string;
+  name: string;
   thumbnail_url: string;
   cook_time_minutes: number;
   instructions: instructions[];
+  nutrition: nutrition;
+  description: string;
+  original_video_url: string;
+  user_ratings: {
+    count_negative: number;
+    count_positive: number;
+  };
 };
 
-export type RECIPE_DATA = {
-  recipes?: RECIPE[];
-};
-export type RecipeHit = {
-  recipes: RECIPE;
-};
+export enum BUTTON_INFO {
+  RECIPE = 'recipe',
+  NUTRITION = 'nutrition',
+}
