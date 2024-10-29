@@ -8,7 +8,7 @@ export const App = () => {
     <Routes>
       <Route path={ROUTES.MAIN} element={<MainPage />} />
       <Route path={ROUTES.SEARCH} element={<MainPage />} />
-      <Route path={ROUTES.SALE} element={<MainPage />} />
+      <Route path={ROUTES.RANDOM} element={<MainPage />} />
       <Route path={`${ROUTES.SEARCH}/:id`} element={<InfoRecipesDetails />} />
     </Routes>
   );

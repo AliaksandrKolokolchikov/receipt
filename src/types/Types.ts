@@ -31,3 +31,9 @@ export enum BUTTON_INFO {
   RECIPE = 'recipe',
   NUTRITION = 'nutrition',
 }
+
+export type RECIPE_RANDOM = {
+  id: number | string;
+  prepTimeMinutes: number;
+  image: string;
+};

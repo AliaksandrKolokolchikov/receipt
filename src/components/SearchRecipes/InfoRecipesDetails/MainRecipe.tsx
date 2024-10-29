@@ -31,7 +31,7 @@ export const MainRecipe = () => {
           <span className="text-[48px] text-white pb-5">{recipe.name}</span>
 
           <div className="flex justify-between items-center">
-            <div className="flex gap-2 border bg-[#FFFFFF1A] max-w-[94px] h-[30px] rounded-full justify-center items-center opacity-50 p-2">
+            <div className="flex gap-2 border bg-[#FFFFFF1A] max-w-[105px] h-[30px] rounded-full justify-center items-center opacity-50 p-2">
               <img src={SEARCH.TIME} alt="SEARCH.TIME" />
               <span className="text-[14px] font-semibold text-[#FFFFFF]">
                 {recipe.cook_time_minutes} mins
