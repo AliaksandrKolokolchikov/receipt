@@ -1,10 +1,11 @@
 import { useCallback, useEffect, useState } from 'react';
-import { RECIPE_RANDOM } from '../types';
 import { useDispatch } from 'react-redux';
-import { AppDispatch } from '../store';
-import { fetchRecipesRandom } from '../store/random/randomSlicer.ts';
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
+
+import { RECIPE_RANDOM } from '../types';
+import { fetchRecipesRandom } from '../store/random/randomSlicer.ts';
+import { AppDispatch } from '../store';
 
 const reproductionArray = (
   array: RECIPE_RANDOM[],

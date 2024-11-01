@@ -36,4 +36,5 @@ export type RECIPE_RANDOM = {
   id: number | string;
   prepTimeMinutes: number;
   image: string;
+  name: string;
 };

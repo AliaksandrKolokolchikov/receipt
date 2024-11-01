@@ -1,6 +1,8 @@
 import RoulettePro from 'react-roulette-pro';
 import 'react-roulette-pro/dist/index.css';
+
 import { useRandomLogic } from '../../hooks/useRandomLogic.tsx';
+import { RouletteWrapper } from './RouletteWrapper.tsx';
 
 export const Roulette = () => {
   const {
@@ -34,21 +36,7 @@ export const Roulette = () => {
         Start
       </button>
 
-      {winningRecipe && (
-        <div className="winning-recipe text-center mt-8">
-          <h2 className="text-lg font-semibold mb-2">
-            Поздравляем! Вы выиграли рецепт:
-          </h2>
-          <h3 className="text-sm mb-4">
-            {winningRecipe.prepTimeMinutes} минут на приготовление
-          </h3>
-          <img
-            src={winningRecipe.image}
-            alt="Winning recipe"
-            className="mx-auto max-w-[200px] max-h-[150px] rounded-lg shadow-md"
-          />
-        </div>
-      )}
+      {winningRecipe && <RouletteWrapper winningRecipe={winningRecipe} />}
     </div>
   );
 };
