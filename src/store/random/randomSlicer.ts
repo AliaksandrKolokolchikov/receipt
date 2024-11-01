@@ -1,6 +1,7 @@
-import { RECIPE_RANDOM } from '../../types';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
+
+import { RECIPE_RANDOM } from '../../types';
 
 type RandomState = {
   recipes: RECIPE_RANDOM[];

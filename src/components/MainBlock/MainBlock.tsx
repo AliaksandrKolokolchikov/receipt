@@ -1,8 +1,7 @@
 import { useLocation } from 'react-router-dom';
 
 import { ROUTES } from '../../constans';
-import { MainPage, SearchRecipe } from '../../pages';
-import { RandomBlock } from '../RandomBlock';
+import { MainPage, RandomPage, SearchRecipe } from '../../pages';
 
 export const MainBlock = () => {
   const location = useLocation();
@@ -14,7 +13,7 @@ export const MainBlock = () => {
       case ROUTES.SEARCH:
         return <SearchRecipe />;
       case ROUTES.RANDOM:
-        return <RandomBlock />;
+        return <RandomPage />;
       default:
         return <MainPage />;
     }
