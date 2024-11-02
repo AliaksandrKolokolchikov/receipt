@@ -37,4 +37,8 @@ export type RECIPE_RANDOM = {
   prepTimeMinutes: number;
   image: string;
   name: string;
+  instructions: string[];
+  userId: number;
+  ingredients: [];
+  rating: number;
 };
