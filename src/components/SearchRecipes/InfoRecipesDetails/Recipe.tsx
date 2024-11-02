@@ -22,7 +22,7 @@ export const Recipe = () => {
           {recipe.instructions.map((item) => (
             <div
               key={item.display_text}
-              className="border-b h-[120px] w-[787px] flex items-center last:border-none"
+              className="border-b h-[120px] max-w-[787px] flex items-center last:border-none"
             >
               <p>{item.position}.</p>
               <p className="m-3">{item.display_text}</p>

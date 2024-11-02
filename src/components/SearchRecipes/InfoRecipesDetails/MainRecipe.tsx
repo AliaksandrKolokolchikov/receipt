@@ -22,7 +22,7 @@ export const MainRecipe = () => {
       <div className="flex">
         <div className="flex flex-col">
           <img
-            className="max-w-[450px] max-h-[400px]"
+            className="w-[400px] h-[350px]"
             src={recipe.thumbnail_url}
             alt={recipe.name}
           />
