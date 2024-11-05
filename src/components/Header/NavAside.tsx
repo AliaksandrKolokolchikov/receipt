@@ -16,7 +16,7 @@ export const NavAside = ({ activePage, setActivePage }: Props) => {
   const menuItems = [
     { name: 'Home', icon: HEADER.HOME, key: 'home', route: ROUTES.MAIN },
     { name: 'Search', icon: HEADER.LOUP, key: 'search', route: ROUTES.SEARCH },
-    { name: 'Sale', icon: HEADER.SALE, key: 'sale', route: ROUTES.SALE },
+    { name: 'Random', icon: HEADER.SALE, key: 'random', route: ROUTES.RANDOM },
   ];
 
   useEffect(() => {
