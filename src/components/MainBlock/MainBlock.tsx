@@ -2,6 +2,7 @@ import { useLocation } from 'react-router-dom';
 
 import { ROUTES } from '../../constans';
 import { MainPage, RandomPage, SearchRecipe } from '../../pages';
+import { HaveIngredients } from '../HaveIngredients';
 
 export const MainBlock = () => {
   const location = useLocation();
@@ -9,7 +10,7 @@ export const MainBlock = () => {
   const renderContent = () => {
     switch (location.pathname) {
       case ROUTES.MAIN:
-        return <div className="text-white">sdsd</div>;
+        return <HaveIngredients />;
       case ROUTES.SEARCH:
         return <SearchRecipe />;
       case ROUTES.RANDOM:

@@ -42,3 +42,10 @@ export type RECIPE_RANDOM = {
   ingredients: [];
   rating: number;
 };
+
+export type HAVE_INGREDIENTS = {
+  id: number | string;
+  title: string;
+  image: string;
+  likes: number;
+};
