@@ -11,7 +11,7 @@ export const ItemResultIngredients = ({ recipe }: Props) => {
           <li key={recipe.id} className="relative">
             <div className="relative ">
               <img
-                className="rounded-2xl max-w-[3000px] "
+                className="rounded-2xl max-w-[300px] "
                 src={recipe.image}
                 alt={recipe.title}
               />

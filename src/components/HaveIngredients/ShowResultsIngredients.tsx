@@ -9,12 +9,12 @@ export const ShowResultsIngredients = () => {
   );
   return (
     <>
-      <div className="mt-8">
+      <div className="pt-5">
         {loading && <p className="text-center text-gray-400">Loading...</p>}
         {error && <p className="text-center text-red-500">{error}</p>}
 
         {!loading && recipes.length > 0 && (
-          <div className="grid grid-cols-4 items-center justify-center">
+          <div className="flex flex-wrap gap-5 items-center justify-center">
             {recipes.map((item) => (
               <ItemResultIngredients key={item.id} recipe={item} />
             ))}
