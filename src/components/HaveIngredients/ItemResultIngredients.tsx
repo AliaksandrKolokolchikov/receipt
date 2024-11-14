@@ -1,12 +1,20 @@
 import { HAVE_INGREDIENTS } from '../../types';
+import { useNavigate } from 'react-router-dom';
+import { ROUTES } from '../../constans';
 
 type Props = {
   recipe: HAVE_INGREDIENTS;
 };
+
 export const ItemResultIngredients = ({ recipe }: Props) => {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate(`${ROUTES.SEARCH}/${recipe.title}`);
+  };
+
   return (
     <>
-      <div>
+      <div onClick={handleClick}>
         <ul>
           <li key={recipe.id} className="relative">
             <div className="relative ">

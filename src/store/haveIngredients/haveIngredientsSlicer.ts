@@ -4,6 +4,7 @@ import axios from 'axios';
 
 type HaveIngredientsState = {
   recipes: HAVE_INGREDIENTS[];
+  recipeDetails: HAVE_INGREDIENTS | null;
   error: string | null;
   loading: boolean;
 };
@@ -12,6 +13,7 @@ const initialState: HaveIngredientsState = {
   recipes: [],
   error: null,
   loading: false,
+  recipeDetails: null,
 };
 
 export const fetchIngredients = createAsyncThunk(
@@ -24,6 +26,23 @@ export const fetchIngredients = createAsyncThunk(
         params: {
           ingredients,
           number: 8,
+          apiKey: API_KEY,
+        },
+      },
+    );
+    console.log(response.data);
+    return response.data;
+  },
+);
+
+export const fetchRecipeDetails = createAsyncThunk(
+  'fetchRecipeDetails',
+  async (recipeId: string) => {
+    const API_KEY = 'f707787d25ed40ff992f1510f5549acc';
+    const response = await axios.get(
+      `https://api.spoonacular.com/recipes/${recipeId}/information`,
+      {
+        params: {
           apiKey: API_KEY,
         },
       },
@@ -50,6 +69,18 @@ const haveIngredientsSlice = createSlice({
       .addCase(fetchIngredients.fulfilled, (state, action) => {
         state.loading = false;
         state.recipes = action.payload;
+      })
+      .addCase(fetchRecipeDetails.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchRecipeDetails.fulfilled, (state, action) => {
+        state.loading = false;
+        state.recipeDetails = action.payload;
+      })
+      .addCase(fetchRecipeDetails.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload as string;
       });
   },
 });
