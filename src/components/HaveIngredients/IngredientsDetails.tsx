@@ -1,39 +1,15 @@
 import { useState } from 'react';
+
 import { NavAside } from '../Header';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchRecipeDetails } from '../../store/search';
-import { AppDispatch, RootState } from '../../store';
+import { WrapperIngredients } from './WrapperIngredients.tsx';
 
 export const IngredientsDetails = () => {
-  const [activePage, setActivePage] = useState('/home');
-  const dispatch = useDispatch<AppDispatch>();
-  const { recipes, recipeDetails } = useSelector(
-    (state: RootState) => state.haveIngredients,
-  );
-
-  const handleRecipeClick = (recipeId: string) => {
-    dispatch(fetchRecipeDetails(recipeId));
-  };
+  const [activePage, setActivePage] = useState<string>('home');
 
   return (
-    <>
-      <NavAside activePage={activePage} setActivePage={setActivePage} />;
-      <div>
-        <h2>Recipes</h2>
-        <ul>
-          {recipes.map((recipe) => (
-            <li key={recipe.id} onClick={() => handleRecipeClick}>
-              {recipe.title}
-            </li>
-          ))}
-        </ul>
-
-        {recipeDetails && (
-          <div>
-            <h3>{recipeDetails.title}</h3>
-          </div>
-        )}
-      </div>
-    </>
+    <div className="flex bg-black font-[Inter]">
+      <NavAside activePage={activePage} setActivePage={setActivePage} />
+      <WrapperIngredients />
+    </div>
   );
 };

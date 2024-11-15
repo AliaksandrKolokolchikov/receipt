@@ -13,7 +13,7 @@ export const App = () => {
       <Route path={ROUTES.RANDOM} element={<MainPage />} />
       <Route path={`${ROUTES.SEARCH}/:id`} element={<InfoRecipesDetails />} />
       <Route path={`${ROUTES.RANDOM}/:id`} element={<RouletteDetails />} />
-      <Route path={`${ROUTES.SEARCH}/:id`} element={<IngredientsDetails />} />
+      <Route path={`${ROUTES.HAVE}/:id`} element={<IngredientsDetails />} />
     </Routes>
   );
 };

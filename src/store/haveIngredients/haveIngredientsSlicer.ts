@@ -19,7 +19,7 @@ const initialState: HaveIngredientsState = {
 export const fetchIngredients = createAsyncThunk(
   'fetchIngredients',
   async (ingredients: string) => {
-    const API_KEY = 'f707787d25ed40ff992f1510f5549acc';
+    const API_KEY = 'b76971c17e2b43259404d6f085c0ec3e';
     const response = await axios.get(
       `https://api.spoonacular.com/recipes/findByIngredients`,
       {
@@ -35,20 +35,23 @@ export const fetchIngredients = createAsyncThunk(
   },
 );
 
-export const fetchRecipeDetails = createAsyncThunk(
+export const fetchHaveRecipeDetails = createAsyncThunk(
   'fetchRecipeDetails',
-  async (recipeId: string) => {
-    const API_KEY = 'f707787d25ed40ff992f1510f5549acc';
-    const response = await axios.get(
-      `https://api.spoonacular.com/recipes/${recipeId}/information`,
-      {
-        params: {
-          apiKey: API_KEY,
+  async (id: string) => {
+    const API_KEY = 'b76971c17e2b43259404d6f085c0ec3e';
+    try {
+      const response = await axios.get(
+        `https://api.spoonacular.com/recipes/${id}/information`,
+        {
+          params: {
+            apiKey: API_KEY,
+          },
         },
-      },
-    );
-    console.log(response.data);
-    return response.data;
+      );
+      return response.data;
+    } catch (error) {
+      console.error('Error fetching recipe details:', error);
+    }
   },
 );
 
@@ -70,15 +73,15 @@ const haveIngredientsSlice = createSlice({
         state.loading = false;
         state.recipes = action.payload;
       })
-      .addCase(fetchRecipeDetails.pending, (state) => {
+      .addCase(fetchHaveRecipeDetails.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
-      .addCase(fetchRecipeDetails.fulfilled, (state, action) => {
+      .addCase(fetchHaveRecipeDetails.fulfilled, (state, action) => {
         state.loading = false;
         state.recipeDetails = action.payload;
       })
-      .addCase(fetchRecipeDetails.rejected, (state, action) => {
+      .addCase(fetchHaveRecipeDetails.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload as string;
       });

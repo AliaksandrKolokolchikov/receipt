@@ -9,7 +9,7 @@ type Props = {
 export const ItemResultIngredients = ({ recipe }: Props) => {
   const navigate = useNavigate();
   const handleClick = () => {
-    navigate(`${ROUTES.SEARCH}/${recipe.title}`);
+    navigate(`${ROUTES.HAVE}/${recipe.id}`);
   };
 
   return (
