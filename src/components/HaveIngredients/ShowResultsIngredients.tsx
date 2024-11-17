@@ -7,6 +7,7 @@ export const ShowResultsIngredients = () => {
   const { recipes, loading, error } = useSelector(
     (state: RootState) => state.haveIngredients,
   );
+
   return (
     <>
       <div className="pt-5">

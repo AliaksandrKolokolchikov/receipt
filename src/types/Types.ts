@@ -52,4 +52,5 @@ export type HAVE_INGREDIENTS = {
   instructions: string[];
   readyInMinutes: number;
   aggregateLikes: number;
+  extendedIngredients: string[];
 };

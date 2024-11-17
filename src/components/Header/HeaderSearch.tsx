@@ -3,8 +3,8 @@ import { useState } from 'react';
 
 import { HEADER } from '../../assets';
 import { ShowResultsSearch } from '../SearchRecipes';
-import { AppDispatch } from '../../store';
 import { fetchRecipes } from '../../store/search';
+import { AppDispatch } from '../../store';
 
 export const HeaderSearch = () => {
   const [search, setSearch] = useState('');
@@ -18,6 +18,7 @@ export const HeaderSearch = () => {
       setShowResults(true);
     }
   };
+
   return (
     <div className="w-full">
       <div className="relative flex items-center border border-gray-700 rounded-full w-full max-w-[400px] h-10 bg-[#171717]">
