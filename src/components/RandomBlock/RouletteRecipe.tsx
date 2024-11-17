@@ -1,4 +1,4 @@
-import { useRandomDetails } from '../../hooks/useRandomDetails.tsx';
+import { useRandomDetails } from '../../hooks';
 import { SEARCH } from '../../assets';
 
 export const RouletteRecipe = () => {

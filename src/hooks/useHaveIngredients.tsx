@@ -1,9 +1,9 @@
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { useEffect } from 'react';
 
-import { AppDispatch, RootState } from '../store';
 import { fetchHaveRecipeDetails } from '../store/haveIngredients';
+import { AppDispatch, RootState } from '../store';
 
 export const useHaveIngredients = () => {
   const { recipes, recipeDetails, loading, error } = useSelector(
@@ -12,17 +12,14 @@ export const useHaveIngredients = () => {
   const { id } = useParams<{ id: string }>();
   const dispatch = useDispatch<AppDispatch>();
 
-  // Найти рецепт по id, если он есть в уже загруженных данных
   const haveIngredients =
-    recipeDetails?.id === id
-      ? recipeDetails
-      : recipes.find((recipe) => recipe.id === Number(id));
+    recipeDetails || recipes.find((recipe) => recipe.id === String(id));
 
   useEffect(() => {
-    if (!haveIngredients && id && !loading) {
+    if (!recipeDetails && id && !loading) {
       dispatch(fetchHaveRecipeDetails(id));
     }
-  }, [dispatch, id, haveIngredients, loading]);
+  }, [id, recipeDetails, loading, dispatch]);
 
   return { haveIngredients, loading, error };
 };

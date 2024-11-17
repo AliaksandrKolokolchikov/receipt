@@ -25,7 +25,7 @@ export const fetchIngredients = createAsyncThunk(
       {
         params: {
           ingredients,
-          number: 8,
+          number: 10,
           apiKey: API_KEY,
         },
       },
@@ -48,6 +48,7 @@ export const fetchHaveRecipeDetails = createAsyncThunk(
           },
         },
       );
+      console.log(response.data);
       return response.data;
     } catch (error) {
       console.error('Error fetching recipe details:', error);
@@ -76,14 +77,15 @@ const haveIngredientsSlice = createSlice({
       .addCase(fetchHaveRecipeDetails.pending, (state) => {
         state.loading = true;
         state.error = null;
-      })
-      .addCase(fetchHaveRecipeDetails.fulfilled, (state, action) => {
-        state.loading = false;
-        state.recipeDetails = action.payload;
+        state.recipeDetails = null;
       })
       .addCase(fetchHaveRecipeDetails.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload as string;
+      })
+      .addCase(fetchHaveRecipeDetails.fulfilled, (state, action) => {
+        state.loading = false;
+        state.recipeDetails = action.payload;
       });
   },
 });

@@ -1,5 +1,6 @@
-import { HAVE_INGREDIENTS } from '../../types';
 import { useNavigate } from 'react-router-dom';
+
+import { HAVE_INGREDIENTS } from '../../types';
 import { ROUTES } from '../../constans';
 
 type Props = {

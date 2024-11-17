@@ -48,4 +48,8 @@ export type HAVE_INGREDIENTS = {
   title: string;
   image: string;
   likes: number;
+  summary: string[];
+  instructions: string[];
+  readyInMinutes: number;
+  aggregateLikes: number;
 };
