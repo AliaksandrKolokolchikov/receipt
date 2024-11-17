@@ -43,7 +43,7 @@ export const NavAside = ({ activePage, setActivePage }: Props) => {
             className="cursor-pointer"
             src={HEADER.LOGO}
             alt="Logo"
-            onClick={() => handleMenuClick(ROUTES.MAIN, 'home')}
+            onClick={() => navigate('/')}
           />
         </div>
         <div className="flex flex-col items-center justify-center gap-8">
@@ -61,9 +61,19 @@ export const NavAside = ({ activePage, setActivePage }: Props) => {
           <button className="w-12 h-8 bg-[#FFFFFF1A] rounded-full">
             <p className="font-bold text-[12px] text-white">EN</p>
           </button>
-          <img src={HEADER.INSTA} alt="INSTA" />
-          <img src={HEADER.TIKTOC} alt="TIKTOC" />
-          <img src={HEADER.YT} alt="YT" />
+          <a href="https://instagram.com" target="_blank">
+            <img className="hover:opacity-50" src={HEADER.INSTA} alt="INSTA" />
+          </a>
+          <a href="https://www.tiktok.com/explore" target="_blank">
+            <img
+              className="hover:opacity-50"
+              src={HEADER.TIKTOC}
+              alt="TIKTOC"
+            />
+          </a>
+          <a href="https://youtube.com" target="_blank">
+            <img className="hover:opacity-50" src={HEADER.YT} alt="YT" />
+          </a>
         </div>
       </div>
     </div>

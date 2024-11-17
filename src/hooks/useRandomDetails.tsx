@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 
-import { fetchRecipeRandomDetails } from '../store/random/randomSlicer.ts';
+import { fetchRecipeRandomDetails } from '../store/random';
 import { AppDispatch, RootState } from '../store';
 
 export const useRandomDetails = () => {

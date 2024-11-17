@@ -1,9 +1,10 @@
-import { HEADER } from '../../assets';
-import { useState } from 'react';
-import { ShowResultsSearch } from '../SearchRecipes';
 import { useDispatch } from 'react-redux';
+import { useState } from 'react';
+
+import { HEADER } from '../../assets';
+import { ShowResultsSearch } from '../SearchRecipes';
+import { fetchRecipes } from '../../store/search';
 import { AppDispatch } from '../../store';
-import { fetchRecipes } from '../../store/search/searchSlicer.ts';
 
 export const HeaderSearch = () => {
   const [search, setSearch] = useState('');
@@ -13,10 +14,11 @@ export const HeaderSearch = () => {
 
   const handleShowResults = () => {
     if (search.trim() !== '') {
-      dispatch(fetchRecipes(search)); // Вызываем action для загрузки рецептов
+      dispatch(fetchRecipes(search));
       setShowResults(true);
     }
   };
+
   return (
     <div className="w-full">
       <div className="relative flex items-center border border-gray-700 rounded-full w-full max-w-[400px] h-10 bg-[#171717]">
