@@ -1,6 +1,13 @@
 {
-  "plugins": {
-    "react": "recommended"
+    "react": "recommended",
+      "extends": ["plugin:react/recommended"],
+
+  "env": {
+    "node": true
   },
-  "extends": ["plugin:react/recommended"]
+  "rules": {
+    "no-undef": "off"
+  }
 }
+
+
