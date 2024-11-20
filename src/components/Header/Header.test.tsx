@@ -1,12 +1,12 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { Provider } from 'react-redux';
+import { MemoryRouter, useNavigate } from 'react-router-dom';
 import { configureStore } from '@reduxjs/toolkit';
 import '@testing-library/jest-dom';
 
 import { HeaderSearch } from './HeaderSearch';
 import { fetchRecipes, recipeReducer } from '../../store/search';
 import { NavAside } from './NavAside.tsx';
-import { MemoryRouter, useNavigate } from 'react-router-dom';
 
 jest.mock('../../store/search', () => ({
   fetchRecipes: jest.fn(),
