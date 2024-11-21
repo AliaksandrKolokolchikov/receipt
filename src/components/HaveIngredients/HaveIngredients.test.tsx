@@ -5,6 +5,8 @@ import { configureStore } from '@reduxjs/toolkit';
 
 import { HaveIngredients } from './HaveIngredients';
 import { fetchIngredients } from '../../store/haveIngredients';
+import { WrapperIngredients } from './WrapperIngredients.tsx';
+import { useHaveIngredients } from '../../hooks';
 
 jest.mock('../../store/haveIngredients', () => ({
   fetchIngredients: jest
@@ -20,6 +22,10 @@ jest.mock('react-redux', () => ({
     }),
   ),
   useDispatch: jest.fn(() => jest.fn()),
+}));
+
+jest.mock('../../hooks', () => ({
+  useHaveIngredients: jest.fn(),
 }));
 
 const mockStore = configureStore({
@@ -70,5 +76,36 @@ describe('HaveIngredients Component', () => {
 
     expect(fetchIngredients).toHaveBeenCalledWith('Sugar');
     expect(fetchIngredients).toHaveBeenCalledTimes(2);
+  });
+});
+
+describe('WrapperIngredients Component', () => {
+  it('renders correctly', () => {
+    (useHaveIngredients as jest.Mock).mockReturnValue({
+      haveIngredients: {
+        title: 'Ingredients',
+        image: 'pizza.svg',
+        readyInMinutes: 45,
+        aggregateLikes: 1,
+        summary: 'this is pizza',
+        instructions: 'ready after 20 min',
+      },
+      error: null,
+      loading: false,
+    });
+
+    render(
+      <Provider store={mockStore}>
+        <WrapperIngredients />
+      </Provider>,
+    );
+
+    const mins = screen.getByText(/mins/i);
+    const ingredients = screen.getByText(/Ingredients:/i);
+    const instruction = screen.getByText(/Instructions:/i);
+
+    expect(mins).toBeInTheDocument();
+    expect(ingredients).toBeInTheDocument();
+    expect(instruction).toBeInTheDocument();
   });
 });
