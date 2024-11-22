@@ -4,7 +4,7 @@ import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
 
 import { RECIPE_RANDOM } from '../types';
-import { fetchRecipesRandom } from '../store/random/randomSlicer.ts';
+import { fetchRecipesRandom } from '../store/random';
 import { AppDispatch } from '../store';
 
 const reproductionArray = (
