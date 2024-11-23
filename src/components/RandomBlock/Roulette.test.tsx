@@ -97,6 +97,7 @@ describe('Roulette component', () => {
   it('navigate after click by recipe', () => {
     const mockNavigate = jest.fn();
     (useNavigate as jest.Mock).mockReturnValue(mockNavigate);
+
     render(
       <Provider store={store}>
         <RouletteWrapper winningRecipe={mockWinningRecipe} />
