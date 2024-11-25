@@ -3,6 +3,7 @@ type Props = {
   selectedType: boolean;
   label: string;
 };
+
 export const WrapperField = ({ onClick, selectedType, label }: Props) => {
   return (
     <>

@@ -1,7 +1,7 @@
 import RoulettePro from 'react-roulette-pro';
 import 'react-roulette-pro/dist/index.css';
 
-import { useRandomLogic } from '../../hooks/useRandomLogic.tsx';
+import { useRandomLogic } from '../../hooks';
 import { RouletteWrapper } from './RouletteWrapper.tsx';
 
 export const Roulette = () => {
